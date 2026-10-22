@@ -80,31 +80,7 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Special case: Single hardcoded Admin login
-    if (email === "admin@jobconnect.com" && password === "admin123") {
-      let adminUser = await User.findOne({ email });
-
-      // Seed the admin user if it doesn't exist yet
-      if (!adminUser) {
-        adminUser = await User.create({
-          name: "Super Admin",
-          email: "admin@jobconnect.com",
-          password: "admin123",
-          role: "admin",
-          phone: "0000000000",
-          location: "Headquarters",
-        });
-      }
-
-      return res.json({
-        success: true,
-        _id: adminUser._id,
-        name: adminUser.name,
-        email: adminUser.email,
-        role: adminUser.role,
-        token: generateToken(adminUser._id),
-      });
-    }
+    
 
     // Check for standard user email
     const user = await User.findOne({ email }).select("+password");
