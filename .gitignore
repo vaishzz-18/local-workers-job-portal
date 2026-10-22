@@ -1,0 +1,14 @@
+node_modules/
+**/node_modules/
+.env
+.env.*
+!.env.example
+dist/
+frontend/src-backup/
+frontend/src-backup-*/
+frontend/src-predeploy-backup/
+scratch/
+
+backend/check_*.js
+backend/scratch_*.js
+backend/dns-fix.js
